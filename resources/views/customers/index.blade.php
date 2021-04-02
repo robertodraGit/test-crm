@@ -18,7 +18,7 @@
           <th scope="col">Email</th>
           <th scope="col">Phone</th>
           <th scope="col">Company</th>
-          <th scope="col" colspan="2" class="text-center">Actions</th>
+          <th scope="col" colspan="3" class="text-center">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -30,6 +30,7 @@
             <td>{{ $customer->email }}</td>
             <td>{{ $customer->phone }}</td>
             <td>{{ $customer->company }}</td>
+            <td><a href="{{ route('customers.show', $customer) }}">[View]</a></td>
             <td><a href="{{ route('customers.edit', $customer) }}">[Edit]</a></td>
             <td><a href="#" onclick="event.preventDefault(); document.getElementById('delete-customer-{{ $customer->id }}-form').submit();">[Delete]</a></td>
 

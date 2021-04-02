@@ -24,6 +24,14 @@ class CustomersController extends Controller
         return redirect()->route('customers.edit', $customer)->withMessage('Customer created successfully.');
     }
 
+    public function show($id) {
+        $customer = Customer::findOrFail($id);
+
+        $orders = [];
+
+        return view('customers.show', compact('customer', 'orders'));
+    }
+
     public function edit(Customer $customer)
     {
         return view('customers.edit', compact('customer'));
@@ -39,7 +47,7 @@ class CustomersController extends Controller
     public function destroy($id)
     {
         $customer = Customer::findOrFail($id);
-        $customer->delete();
+        $customer -> delete();
 
         return redirect()->route('customers.index')->withMessage('Customer deleted successfully');
     }
