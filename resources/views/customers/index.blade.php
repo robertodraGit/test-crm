@@ -33,8 +33,8 @@
             <td><a href="{{ route('customers.edit', $customer) }}">[Edit]</a></td>
             <td><a href="#" onclick="event.preventDefault(); document.getElementById('delete-customer-{{ $customer->id }}-form').submit();">[Delete]</a></td>
 
-            <form id="delete-customer-{{ $customer->id }}-form" action="{{ route('customers.destroy', $customer) }}" method="POST" style="display: none;">
-                @method('DELETE')
+            <form id="delete-customer-{{ $customer->id }}-form" action="{{ route('customers-delete', $customer -> id) }}" method="GET" style="display: none;">
+                @method('GET')
                 @csrf
             </form>
           </tr>
