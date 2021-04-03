@@ -55,6 +55,16 @@ class CustomersController extends Controller
     public function destroy($id)
     {
         $customer = Customer::findOrFail($id);
+
+        $tot_orders = Order::all();
+        $orders = [];
+
+        foreach ($tot_orders as $order) {
+            if($order -> customer_id === $customer -> id) {
+                $order -> delete();
+            }
+        }
+        
         $customer -> delete();
 
         return redirect()->route('customers.index')->withMessage('Customer deleted successfully');
