@@ -14,4 +14,7 @@ Route::get('/customers/delete/{id}', 'CustomersController@destroy') -> name('cus
 // orders routes
 Route::resource('orders', 'OrdersController')->except('show')->middleware('auth');
 
+//delete order
+Route::get('/orders/delete/{id}', 'ordersController@destroy') -> name('orders-delete');
+
 Auth::routes();

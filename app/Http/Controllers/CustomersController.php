@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Order;
+
 use Illuminate\Http\Request;
 
 class CustomersController extends Controller
@@ -26,8 +28,14 @@ class CustomersController extends Controller
 
     public function show($id) {
         $customer = Customer::findOrFail($id);
-
+        $tot_orders = Order::all();
         $orders = [];
+
+        foreach ($tot_orders as $order) {
+            if($order -> customer_id === $customer -> id) {
+                $orders[] = $order;
+            }
+        }
 
         return view('customers.show', compact('customer', 'orders'));
     }

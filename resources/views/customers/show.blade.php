@@ -1,11 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<div class="row">
+  <div class="row">
     <div class="offset-md-10 col-md-2">
       <a href="{{ route('customers.index') }}" class="btn btn-primary btn-block"><- Go back</a>
     </div>
   </div>
+
   <br>
+
   <div class="row">
     <div class="col-md-12">
       <table class="table">
@@ -44,6 +46,14 @@
   <br>
 
   <div class="row">
+    <div class="offset-md-10 col-md-2">
+      <a href="{{ route('orders.create') }}" class="btn btn-primary btn-block">+ New Order</a>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
     <div class="col-md-12">
       <table class="table">
         <thead class="thead-dark">
@@ -61,7 +71,7 @@
                 <tr>
                 <th scope="row">{{ $order->id }}</th>
                 <td>{{ $order->title }}</td>
-                <td>{{ $order->description }}</td>
+                <td colspan='2'>{{ $order->description }}</td>
                 <td>{{ $order->cost }}</td>
                 <td>{{ $order->created_at }}</td>
                 <td><a href="{{ route('orders.edit', $order) }}">[Edit]</a></td>

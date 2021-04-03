@@ -17,17 +17,18 @@
             <th scope="col">#</th>
             <th scope="col">Customer ID</th>
             <th scope="col">Title</th>
-            <th scope="col" colspan="1">Description</th>
+            <th scope="col">Description</th>
             <th scope="col">Cost</th>
             <th scope="col">Created at</th>
             <th scope="col" colspan="2" class="text-center">Actions</th>
           </tr>
         </thead>
-        @if (empty($orders))
+        @if (!empty($orders))
             <tbody>
                   @foreach ($orders as $order)
                       <tr>
                       <th scope="row">{{ $order->id }}</th>
+                      <td>{{ $order->customer_id }}</td>
                       <td>{{ $order->title }}</td>
                       <td>{{ $order->description }}</td>
                       <td>{{ $order->cost }}</td>
@@ -53,13 +54,5 @@
       </table>
     </div>
 </div>
-
-@if (empty($orders))
-    <div class="row">
-        <div class="col-md-12">
-        {{ $orders->links() }}
-        </div>
-    </div>
-@endif
 
 @stop
